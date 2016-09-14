@@ -20,6 +20,11 @@
     "browser-sync": "^2.14.0",
     "gulp": "~3.8.0",
     "gulp-jade": "^0.10",
-    "gulp-sass": "^2.3.2"
+    "gulp-sass": "^2.3.2",
+    "gulp-typescript": "^2.13.6"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "jquery": "^3.1.0"
   }
 }

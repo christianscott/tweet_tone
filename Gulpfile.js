@@ -1,16 +1,20 @@
 const gulp = require('gulp'),
       sass = require('gulp-sass'),
-      jade = require('gulp-jade');
+      jade = require('gulp-jade'),
+      tsc = require('gulp-typescript');
 
 const browserSync = require('browser-sync').create();
+const tsProject = tsc.createProject("tsconfig.json");
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass', 'jade'], function() {
+gulp.task('serve', ['sass', 'jade', 'typescript'], function() {
 
+    // Browser sync serves files from 'dist' directory
     browserSync.init({
         server: "./dist"
     });
 
+    gulp.watch("src/*.ts", ['typescript'])
     gulp.watch("src/*.scss", ['sass']);
     gulp.watch("src/*.jade", ['jade']);
     gulp.watch("dist/*.html").on('change', browserSync.reload);
@@ -25,10 +29,18 @@ gulp.task('sass', function() {
         .pipe(browserSync.stream());
 });
 
+// Compile jade
 gulp.task('jade', function() {
   return gulp.src("src/*.jade")
         .pipe(jade())
         .pipe(gulp.dest("dist"))
+});
+
+// Compile typescript
+gulp.task('typescript', function() {
+  return tsProject.src()
+        .pipe(tsc(tsProject))
+        .js.pipe(gulp.dest("dist"));
 });
 
 gulp.task('default', ['serve']);
