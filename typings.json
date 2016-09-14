@@ -1,6 +1,7 @@
 {
   "globalDependencies": {
     "jquery": "registry:dt/jquery#1.10.0+20160908203239",
-    "mustache": "registry:dt/mustache#0.8.2+20160316155526"
+    "mustache": "registry:dt/mustache#0.8.2+20160316155526",
+    "underscore": "registry:dt/underscore#1.8.3+20160908111004"
   }
 }

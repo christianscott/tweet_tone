@@ -1,10 +1,16 @@
 /// <reference path="../typings/index.d.ts"/>
 var result = $(".result")[0];
-function maxTone(toneArray) {
-    var max = toneArray.reduce(function (prev, current) {
-        return (prev.score > current.score) ? prev : current;
+function maxTone(tones) {
+    var maxTone = Object.keys(tones).reduce(function (result, item) {
+        if (tones[item] > result.score)
+            result.score = tones[item];
+        result.tone_name = item;
+        return result;
+    }, {
+        score: 0,
+        tone_name: ""
     });
-    return max;
+    return maxTone;
 }
 ;
 function sendTweetToneRequest(username, callback) {
@@ -23,5 +29,6 @@ function sendTweetToneRequest(username, callback) {
 }
 ;
 sendTweetToneRequest('lorde', function (tones) {
-    result.innerHTML = 'The max emotion is: ' + tones;
+    var max = maxTone(tones);
+    result.innerHTML = 'The max emotion is: ' + max.tone_name + ' at ' + max.score;
 });

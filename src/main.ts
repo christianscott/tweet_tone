@@ -7,11 +7,17 @@ interface tone {
   tone_name: string;
 }
 
-function maxTone(toneArray: tone[]): tone {
-  let max = toneArray.reduce(function(prev, current) {
-    return (prev.score > current.score) ? prev : current
-  });
-  return max
+function maxTone(tones: Object): tone {
+  let maxTone = Object.keys(tones).reduce((result, item) => {
+    if (tones[item] > result.score)
+      result.score = tones[item]
+      result.tone_name = item
+      return result
+  }, {
+    score:0,
+    tone_name: ""
+  })
+  return maxTone
 };
 
 function sendTweetToneRequest(username: string, callback): void {
@@ -30,5 +36,6 @@ function sendTweetToneRequest(username: string, callback): void {
 };
 
 sendTweetToneRequest('lorde', (tones) => {
-  result.innerHTML = 'The max emotion is: ' + tones;
+  let max = maxTone(tones);
+  result.innerHTML = 'The max emotion is: ' + max.tone_name + ' at ' + max.score;
 })
