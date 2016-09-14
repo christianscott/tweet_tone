@@ -1,0 +1,25 @@
+{
+  "name": "module_2_submission",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrfrasco/module_2_submission.git"
+  },
+  "author": "Christian Scott (christianfscott@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrfrasco/module_2_submission/issues"
+  },
+  "homepage": "https://github.com/chrfrasco/module_2_submission#readme",
+  "devDependencies": {
+    "browser-sync": "^2.14.0",
+    "gulp": "~3.8.0",
+    "gulp-jade": "^0.10",
+    "gulp-sass": "^2.3.2"
+  }
+}
