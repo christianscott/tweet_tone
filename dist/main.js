@@ -3,9 +3,10 @@ var result = $(".result")[0];
 var textBox = $("#text-box");
 function maxTone(tones) {
     var maxTone = Object.keys(tones).reduce(function (result, item) {
-        if (tones[item] > result.score)
+        if (tones[item] > result.score) {
             result.score = tones[item];
-        result.tone_name = item;
+            result.tone_name = item;
+        }
         return result;
     }, {
         score: 0,

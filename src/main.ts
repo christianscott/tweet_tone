@@ -5,10 +5,11 @@ let textBox = $("#text-box");
 
 function maxTone(tones: Object) {
   let maxTone = Object.keys(tones).reduce((result, item) => {
-    if (tones[item] > result.score)
+    if (tones[item] > result.score){
       result.score = tones[item]
       result.tone_name = item
-      return result
+    } 
+    return result
   }, {
     score:0,
     tone_name: ""
