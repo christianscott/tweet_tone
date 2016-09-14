@@ -4,18 +4,17 @@ function maxTone(toneArray) {
     var max = toneArray.reduce(function (prev, current) {
         return (prev.score > current.score) ? prev : current;
     });
+    return max;
 }
 ;
 function sendTweetToneRequest(username, callback) {
     var url = "https://immense-sea-71091.herokuapp.com/tweetTone/" + username;
     $.ajax({
         url: url,
-        type: "GET",
-        beforeSend: function (request) {
-            request.setRequestHeader("Authorization", "Negotiate");
-        }
+        type: "GET"
     })
         .done(function (data) {
+        console.log(data);
         callback(data);
     })
         .fail(function (error) {
@@ -24,5 +23,5 @@ function sendTweetToneRequest(username, callback) {
 }
 ;
 sendTweetToneRequest('lorde', function (tones) {
-    result.innerHTML = 'The max emotion is: ' + maxTone(tones);
+    result.innerHTML = 'The max emotion is: ' + tones;
 });
