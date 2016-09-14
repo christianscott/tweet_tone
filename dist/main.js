@@ -1,5 +1,6 @@
 /// <reference path="../typings/index.d.ts"/>
 var result = $(".result")[0];
+var textBox = $("#text-box");
 function maxTone(tones) {
     var maxTone = Object.keys(tones).reduce(function (result, item) {
         if (tones[item] > result.score)
@@ -28,7 +29,15 @@ function sendTweetToneRequest(username, callback) {
     });
 }
 ;
-sendTweetToneRequest('lorde', function (tones) {
-    var max = maxTone(tones);
-    result.innerHTML = 'The max emotion is: ' + max.tone_name + ' at ' + max.score;
+$('form').submit(function (event) {
+    event.preventDefault();
+    if (textBox.val().length !== 0) {
+        var username_1 = textBox.val();
+        sendTweetToneRequest(username_1, function (tones) {
+            var max = maxTone(tones);
+            result.innerHTML = username_1 + "'s max emotion, according to the last 50 tweets, is " + max.tone_name.toLowerCase();
+        });
+        textBox.val('');
+    }
+    return false;
 });

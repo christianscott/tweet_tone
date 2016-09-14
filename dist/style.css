@@ -1,0 +1,13 @@
+body,
+html {
+  height: 100vh;
+  width: 100vw; }
+
+div.content {
+  display: flex;
+  flex-direction: column;
+  background-color: mistyrose;
+  height: 100%;
+  width: 73%;
+  margin: auto;
+  text-align: center; }

@@ -1,13 +1,9 @@
 /// <reference path="../typings/index.d.ts"/>
 
 let result = $(".result")[0];
+let textBox = $("#text-box");
 
-interface tone {
-  score: number;
-  tone_name: string;
-}
-
-function maxTone(tones: Object): tone {
+function maxTone(tones: Object) {
   let maxTone = Object.keys(tones).reduce((result, item) => {
     if (tones[item] > result.score)
       result.score = tones[item]
@@ -35,7 +31,16 @@ function sendTweetToneRequest(username: string, callback): void {
   });
 };
 
-sendTweetToneRequest('lorde', (tones) => {
-  let max = maxTone(tones);
-  result.innerHTML = 'The max emotion is: ' + max.tone_name + ' at ' + max.score;
+$('form').submit((event) => {
+    event.preventDefault();
+    if (textBox.val().length !== 0) {
+      let username = textBox.val();
+      sendTweetToneRequest(username, (tones) => {
+        let max = maxTone(tones);
+        result.innerHTML = `${username}'s max emotion, according to the last 50 tweets, is ${max.tone_name.toLowerCase()}`;
+      })
+      textBox.val('');
+    }
+  return false
 })
+
