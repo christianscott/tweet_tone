@@ -33,7 +33,7 @@ gulp.task('sass', function() {
 gulp.task('jade', function() {
   return gulp.src("src/*.jade")
         .pipe(jade())
-        .pipe(gulp.dest("dist"))
+        .pipe(gulp.dest(""))
 });
 
 // Compile typescript
