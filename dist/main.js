@@ -1,8 +1,12 @@
 /// <reference path="../typings/index.d.ts"/>
 var results = $("#results");
 var textBox = $("#text-box");
+var title = $('#title')[0];
 var resultTemplate = $('#result-template').html();
 Mustache.parse(resultTemplate);
+function cleanString(string) {
+    return string.replace('@', '').replace(' ', '');
+}
 function maxTone(tones) {
     var maxTone = Object.keys(tones).reduce(function (result, item) {
         if (tones[item] > result.score) {
@@ -17,9 +21,10 @@ function maxTone(tones) {
     return maxTone;
 }
 ;
-function sendTweetToneRequest(username, callback) {
+function sendTweetToneRequest(userName, callback) {
     console.log('sending request');
-    var url = "https://immense-sea-71091.herokuapp.com/tweetTone/" + username;
+    var cleanUserName = cleanString(userName);
+    var url = "https://immense-sea-71091.herokuapp.com/tweetTone/" + cleanUserName;
     $.ajax({
         url: url,
         type: "GET"
@@ -35,16 +40,18 @@ function sendTweetToneRequest(username, callback) {
 $('form').submit(function (event) {
     event.preventDefault();
     if (textBox.val().length !== 0) {
+        title.innerHTML = 'loading...';
         var query = textBox.val();
         sendTweetToneRequest(query, function (res) {
             var max = maxTone(res.tone);
             console.log(max);
             var newResult = Mustache.render(resultTemplate, {
-                userName: res.tweetInfo.userName || 'no username',
+                userName: res.tweetInfo.userName || 'no userName',
                 tone: max.tone_name + ": " + max.score,
                 profileImage: res.tweetInfo.profileImage || 'http://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3_normal.png'
             });
             results.append(newResult);
+            title.innerHTML = 'Enter a name';
         });
         textBox.val('');
     }
