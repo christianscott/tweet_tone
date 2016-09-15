@@ -4,7 +4,7 @@
 
 ![screenshot](http://i.imgur.com/3ETaJNq.png)
 
-Supply a twitter handle and the site will give you an estimate of how that user feeling, based on the last 50 tweets they sent.
+Supply a twitter handle and the site will give you an estimate of how that user feeling, based on the last 50 tweets they sent. Not perfect, gets a bit weird if you enter names too quickly or supply a username that doesnt exist.
 
 Makes use of a simple API I made, found [here](https://github.com/chrfrasco/tweet_tone_api). It uses the Twitter and IBM watson APIs. It is hosted on heroku and can be found [here](https://immense-sea-71091.herokuapp.com/)
 
