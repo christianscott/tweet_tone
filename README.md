@@ -1,3 +1,3 @@
-# module_2_submission
+# MSA module 2 submission
 
-uses https://github.com/chrfrasco/tweet_tone_api
+makes use of a simple API I made, found here https://github.com/chrfrasco/tweet_tone_api

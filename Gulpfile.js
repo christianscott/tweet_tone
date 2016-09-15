@@ -18,7 +18,7 @@ gulp.task('serve', ['sass', 'jade', 'typescript'], function() {
     gulp.watch("src/*.ts", ['typescript'])
     gulp.watch("src/*.scss", ['sass']);
     gulp.watch("src/*.jade", ['jade']);
-    gulp.watch("dist/*.html").on('change', browserSync.reload);
+    gulp.watch("*.html").on('change', browserSync.reload);
     gulp.watch("dist/*.js").on('change', browserSync.reload);
 });
 
