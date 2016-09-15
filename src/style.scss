@@ -4,12 +4,16 @@ html {
   width: 100vw;
 }
 
-div.content {
+.content {
   display: flex;
   flex-direction: column;
-  background-color: mistyrose;
   height: 100%;
   width: 73%;
   margin: auto;
-  text-align: center;
+}
+
+.feeling {
+  margin-bottom: 0;
+  margin-top: 5px;
+  padding: 5px;
 }

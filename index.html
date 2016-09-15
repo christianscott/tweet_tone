@@ -1,1 +1,13 @@
-<!DOCTYPE html><html lang="en"></html><head><meta charset="UTF-8"/><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/><link href="dist/style.css" rel="stylesheet"/><title>How's this tweeter doing?</title></head><body><div class="content"><form action="" class="message-box"><input placeholder="@twitter_handle" autocomplete="off" maxlength="140" id="text-box"/><button class="send">stalk</button></form><h1>???</h1><p class="result">loading...</p></div><script src="https://code.jquery.com/jquery-3.1.0.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script><script src="dist/main.js"></script></body>
+<!DOCTYPE html><html lang="en"></html><head><meta charset="UTF-8"/><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/><link href="dist/style.css" rel="stylesheet"/><title>How's this tweeter doing?</title></head><body><div class="content"><h1>Enter a name to get started</h1><form><div class="input-group"><span id="basic-addon1" class="input-group-addon">@</span><input type="text" id="text-box" placeholder="username" autocomplete="off" class="form-control"/><span class="input-group-btn"><button type="button" class="btn btn-default">stalk</button></span></div></form><div id="results"></div></div><script src="https://code.jquery.com/jquery-3.1.0.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script><script id="result-template" type="x-tmpl-mustache"><div class="feeling panel panel-default">
+  <div class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="{{  profileImage  }}" alt="{{ userName }}">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">how is {{ userName }} feeling?</h4>
+      {{ tone }}
+    </div>
+  </div>
+</div></script><script src="dist/main.js"></script></body>

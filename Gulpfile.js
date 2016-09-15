@@ -11,7 +11,8 @@ gulp.task('serve', ['sass', 'jade', 'typescript'], function() {
 
     // Browser sync serves files from 'dist' directory
     browserSync.init({
-        server: "./dist"
+        server: "./",
+        port: 8000
     });
 
     gulp.watch("src/*.ts", ['typescript'])
